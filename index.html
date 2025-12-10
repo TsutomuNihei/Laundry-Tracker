@@ -6,10 +6,12 @@
     <title>Laundry Tracker</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-light min-vh-100 d-flex align-items-center">
-
+<!-- Bootstrap stuff to decide colour, flexible height and alignment -->
+<body class="bg-light min-vh-100 d-flex align-items-center"> 
+    <!-- surround buttons and stuff inside a container object -->
     <div class="container">
         <div class="row justify-content-center">
+            <!-- 3 difference sizes given, so depending on phone or whatever diff sizes -->
             <div class="col-12 col-md-5 col-lg-4">
                 <div class="card shadow-lg border-0 rounded-4 text-center p-4">
                     
@@ -39,6 +41,7 @@
         </div>
     </div>
 
+    <!-- the firebase script part, most of it can be reused -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
@@ -47,7 +50,7 @@
         const firebaseConfig = {
             apiKey: "AIzaSyAXnOu7BJq4b1UKTzeTHotyA3FN2gL9Y_I",
             authDomain: "laundry-tracker-3600c.firebaseapp.com",
-            databaseURL: "https://laundry-tracker-3600c-default-rtdb.firebaseio.com", // Ensure this line exists!
+            databaseURL: "https://laundry-tracker-3600c-default-rtdb.firebaseio.com", 
             projectId: "laundry-tracker-3600c",
             // storageBucket: "PASTE_STORAGE_BUCKET_HERE",
             messagingSenderId: "595439348316",

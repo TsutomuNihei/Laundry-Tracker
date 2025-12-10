@@ -12,6 +12,7 @@ const statusEl = document.getElementById('status-display');
 function formatTime(totalSeconds) {
     const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
     const s = Math.floor(totalSeconds % 60).toString().padStart(2, '0');
+    //formatting
     return `${m}:${s}`;
 }
 
@@ -72,8 +73,13 @@ startBtn.addEventListener('click', () => {
 });
 
 resetBtn.addEventListener('click', () => {
-    // Wipe the data to make it free
-    window.set(window.ref(window.db, 'machines/' + MACHINE_ID), null);
+    // 1. Show the popup and ask the user
+    const userConfirmed = confirm("confirm to reset/cancel the washing cycle!");
+
+    // 2. Only reset if they clicked "OK"
+    if (userConfirmed) {
+        window.set(window.ref(window.db, 'machines/' + MACHINE_ID), null);
+    }
 });
 
 // ---------------------------------------------------------
