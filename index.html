@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laundry Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light min-vh-100 d-flex align-items-center">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-5 col-lg-4">
+                <div class="card shadow-lg border-0 rounded-4 text-center p-4">
+                    
+                    <h2 class="mb-4 text-primary">Washing Machine 1</h2>
+
+                    <div id="status-display" class="d-flex align-items-center justify-content-center mx-auto mb-4" 
+                         style="width: 150px; height: 150px; background-color: #198754; color: white; border-radius: 50%; font-size: 2rem; font-weight: bold;">
+                        FREE
+                    </div>
+
+                    <div class="mb-4">
+                        <h1 id="timer" class="display-2 fw-bold text-dark">00:00</h1>
+                        <p class="text-muted">Time Remaining</p>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button id="start-btn" class="btn btn-outline-success btn-lg p-3 shadow-sm">
+                            Start Wash (42m)
+                        </button>
+                        
+                        <button id="reset-btn" class="btn btn-outline-danger">
+                            Reset / Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        // --- PASTE YOUR FIREBASE KEYS BELOW ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyAXnOu7BJq4b1UKTzeTHotyA3FN2gL9Y_I",
+            authDomain: "laundry-tracker-3600c.firebaseapp.com",
+            databaseURL: "https://laundry-tracker-3600c-default-rtdb.firebaseio.com", // Ensure this line exists!
+            projectId: "laundry-tracker-3600c",
+            // storageBucket: "PASTE_STORAGE_BUCKET_HERE",
+            messagingSenderId: "595439348316",
+            appId: "1:595439348316:web:ba77b1b120edb030419499"
+        };
+        // --------------------------------------
+
+        // Initialize connection
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Share the connection with script.js
+        window.db = db;
+        window.set = set;
+        window.ref = ref;
+        window.onValue = onValue;
+
+        console.log("Firebase Connected Successfully!");
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="./script.js"></script>
+</body>
+</html>
